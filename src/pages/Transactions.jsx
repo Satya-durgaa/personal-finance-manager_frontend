@@ -279,13 +279,13 @@ const Transactions = () => {
                                             value={newTransaction.category}
                                             onChange={(e) => setNewTransaction({ ...newTransaction, category: e.target.value })}
                                         >
-                                            <option value="General">General</option>
-                                            <option value="Income">Income</option>
-                                            <option value="Food">Food</option>
-                                            <option value="Transport">Transport</option>
-                                            <option value="Housing">Housing</option>
-                                            <option value="Entertainment">Entertainment</option>
-                                            <option value="Health">Health</option>
+                                            <option className="bg-gray-900 text-white" value="General">General</option>
+                                            <option className="bg-gray-900 text-white" value="Income">Income</option>
+                                            <option className="bg-gray-900 text-white" value="Food">Food</option>
+                                            <option className="bg-gray-900 text-white" value="Transport">Transport</option>
+                                            <option className="bg-gray-900 text-white" value="Housing">Housing</option>
+                                            <option className="bg-gray-900 text-white" value="Entertainment">Entertainment</option>
+                                            <option className="bg-gray-900 text-white" value="Health">Health</option>
                                         </select>
                                     </div>
                                     <input

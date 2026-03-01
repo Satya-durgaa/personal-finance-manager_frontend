@@ -3,6 +3,8 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Budgets from './pages/Budgets';
@@ -13,7 +15,12 @@ import Transactions from './pages/Transactions';
 const AppContent = () => {
   const { user, loading } = useAuth();
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [view, setView] = useState('landing'); // 'landing', 'login', 'register'
+  const [view, setView] = useState('landing'); // 'landing', 'login', 'register', 'forgot'
+
+  // Detect /reset-password URL (from Supabase recovery email link)
+  if (window.location.pathname === '/reset-password' || window.location.hash.includes('type=recovery')) {
+    return <ResetPassword onSwitchToLogin={() => { window.history.pushState({}, '', '/'); setView('login'); }} />;
+  }
 
   if (loading) {
     return (
@@ -46,8 +53,10 @@ const AppContent = () => {
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 rounded-full blur-[120px] animate-pulse delay-700"></div>
 
         <div className="w-full max-w-md relative z-10 animate-in fade-in zoom-in duration-500">
-          {view === 'login' ? (
-            <Login onSwitchToRegister={() => setView('register')} />
+          {view === 'forgot' ? (
+            <ForgotPassword onSwitchToLogin={() => setView('login')} />
+          ) : view === 'login' ? (
+            <Login onSwitchToRegister={() => setView('register')} onForgotPassword={() => setView('forgot')} />
           ) : (
             <Register onSwitchToLogin={() => setView('login')} />
           )}

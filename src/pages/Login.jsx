@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { LogIn, Mail, Lock, Loader2, ArrowRight } from 'lucide-react';
 
-const Login = ({ onSwitchToRegister }) => {
+const Login = ({ onSwitchToRegister, onForgotPassword }) => {
     const { login } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -63,6 +63,16 @@ const Login = ({ onSwitchToRegister }) => {
                                 required
                             />
                         </div>
+                    </div>
+
+                    <div className="flex justify-end">
+                        <button
+                            type="button"
+                            onClick={onForgotPassword}
+                            className="text-xs text-primary hover:underline font-medium"
+                        >
+                            Forgot password?
+                        </button>
                     </div>
 
                     <button

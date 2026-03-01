@@ -226,13 +226,13 @@ const Budgets = () => {
                                         value={newBudget.category}
                                         onChange={(e) => setNewBudget({ ...newBudget, category: e.target.value })}
                                     >
-                                        <option value="General">General</option>
-                                        <option value="Groceries">Food</option>
-                                        <option value="Transport">Transport</option>
-                                        <option value="Housing">Housing</option>
-                                        <option value="Entertainment">Entertainment</option>
-                                        <option value="Health">Health</option>
-                                        <option value="Dining Out">Eating Out</option>
+                                        <option className="bg-gray-900 text-white" value="General">General</option>
+                                        <option className="bg-gray-900 text-white" value="Groceries">Food</option>
+                                        <option className="bg-gray-900 text-white" value="Transport">Transport</option>
+                                        <option className="bg-gray-900 text-white" value="Housing">Housing</option>
+                                        <option className="bg-gray-900 text-white" value="Entertainment">Entertainment</option>
+                                        <option className="bg-gray-900 text-white" value="Health">Health</option>
+                                        <option className="bg-gray-900 text-white" value="Dining Out">Eating Out</option>
                                     </select>
                                 </div>
 
@@ -257,9 +257,9 @@ const Budgets = () => {
                                         value={newBudget.period}
                                         onChange={(e) => setNewBudget({ ...newBudget, period: e.target.value })}
                                     >
-                                        <option value="monthly">Monthly</option>
-                                        <option value="weekly">Weekly</option>
-                                        <option value="yearly">Yearly</option>
+                                        <option className="bg-gray-900 text-white" value="monthly">Monthly</option>
+                                        <option className="bg-gray-900 text-white" value="weekly">Weekly</option>
+                                        <option className="bg-gray-900 text-white" value="yearly">Yearly</option>
                                     </select>
                                 </div>
                             </div>
