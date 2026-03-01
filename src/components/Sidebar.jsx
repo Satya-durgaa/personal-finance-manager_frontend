@@ -17,8 +17,8 @@ const NavItem = ({ icon: Icon, label, isActive, onClick }) => (
     <button
         onClick={onClick}
         className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-300 group ${isActive
-                ? 'bg-primary/20 text-white shadow-lg shadow-primary/10 border border-white/5'
-                : 'text-gray-400 hover:text-white hover:bg-white/5'
+            ? 'bg-primary/20 text-white shadow-lg shadow-primary/10 border border-white/5'
+            : 'text-gray-400 hover:text-white hover:bg-white/5'
             }`}
     >
         <div className="flex items-center gap-3">
@@ -54,11 +54,11 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
                     </div>
                     <div className="flex flex-col">
                         <span className="text-xl font-black tracking-tighter bg-gradient-to-r from-white to-white/40 bg-clip-text text-transparent">
-                            FinanceAI
+                            WealthWise
                         </span>
                         <div className="flex items-center gap-1.5">
                             <Sparkles className="w-3 h-3 text-primary animate-pulse" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/80">Premium Systems</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/80">Personal Finance</span>
                         </div>
                     </div>
                 </div>
