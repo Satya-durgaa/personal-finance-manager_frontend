@@ -1,10 +1,22 @@
 import React from 'react';
 import { Heart, ShieldCheck, Zap } from 'lucide-react';
 
-const FinancialHealthScore = () => {
-    const score = 842;
-    const maxScore = 1000;
-    const percentage = (score / maxScore) * 100;
+const FinancialHealthScore = ({ summary = { savings: 0, balance: 0, income: 0, expenses: 0 } }) => {
+    // Dynamic score calculation
+    const savingsRatio = summary.income > 0 ? summary.savings / summary.income : 0;
+    const spendRatio = summary.income > 0 ? summary.expenses / summary.income : 0;
+
+    let baseScore = 650;
+    baseScore += Math.min(savingsRatio * 150, 150); // Bonus for savings
+    baseScore -= Math.min((spendRatio - 0.5) * 100, 100); // Penalty for high spending
+
+    const score = Math.max(300, Math.min(850, Math.round(baseScore)));
+    const maxScore = 850;
+    const percentage = ((score - 300) / (maxScore - 300)) * 100;
+
+    let statusText = 'Fair';
+    if (score >= 750) statusText = 'Excellent';
+    else if (score >= 650) statusText = 'Good';
 
     return (
         <div className="glass p-6 rounded-2xl flex flex-col items-center justify-center text-center">
@@ -35,7 +47,7 @@ const FinancialHealthScore = () => {
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-4xl font-black text-white">{score}</span>
-                    <span className="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Excellent</span>
+                    <span className="text-[10px] text-gray-500 uppercase tracking-widest mt-1">{statusText}</span>
                 </div>
             </div>
 

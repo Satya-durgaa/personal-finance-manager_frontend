@@ -1,11 +1,47 @@
 import React from 'react';
 import { Sparkles, Brain, ArrowDownCircle, Lightbulb } from 'lucide-react';
 
-const AIRecommendations = () => {
-    const recommendations = [
-        { title: 'Reduce Subscriptions', desc: 'You have 4 active streaming services. Cancelling one could save you $180/year.', icon: Sparkles, color: 'text-primary' },
-        { title: 'Dining Out High', desc: 'Spending on restaurants is 25% higher than last month. Consider meal prepping.', icon: Brain, color: 'text-emerald-500' },
-    ];
+const AIRecommendations = ({ transactions = [] }) => {
+    // Find the highest spending category dynamically
+    const categorySpending = transactions.reduce((acc, t) => {
+        if (t.type === 'expense') {
+            acc[t.category] = (acc[t.category] || 0) + parseFloat(t.amount);
+        }
+        return acc;
+    }, {});
+
+    const sortedCategories = Object.entries(categorySpending).sort((a, b) => b[1] - a[1]);
+    const topCategory = sortedCategories.length > 0 ? sortedCategories[0][0] : null;
+    const topCategoryAmount = sortedCategories.length > 0 ? sortedCategories[0][1] : 0;
+
+    const recommendations = [];
+
+    if (topCategory) {
+        recommendations.push({
+            title: `High ${topCategory} Spending`,
+            desc: `You've spent $${Math.round(topCategoryAmount)} on ${topCategory} recently. Consider setting a strict budget to save more.`,
+            icon: Brain,
+            color: 'text-rose-500'
+        });
+    }
+
+    if (transactions.filter(t => t.type === 'income').length === 0) {
+        recommendations.push({
+            title: 'Track Your Income',
+            desc: 'Start logging your income streams to get a more accurate Financial Health Score and better predictions.',
+            icon: Sparkles,
+            color: 'text-amber-500'
+        });
+    }
+
+    if (recommendations.length === 0) {
+        recommendations.push({
+            title: 'Looking Good!',
+            desc: 'Your spending habits are perfectly balanced. Keep up the good work and maintain your budget.',
+            icon: Sparkles,
+            color: 'text-emerald-500'
+        });
+    }
 
     return (
         <div className="glass p-6 rounded-2xl space-y-6">

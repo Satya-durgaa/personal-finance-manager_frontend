@@ -1,17 +1,34 @@
 import React from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-const data = [
-    { name: 'Jan', spending: 4000, income: 5000 },
-    { name: 'Feb', spending: 3000, income: 5200 },
-    { name: 'Mar', spending: 2000, income: 5000 },
-    { name: 'Apr', spending: 2780, income: 5300 },
-    { name: 'May', spending: 1890, income: 5100 },
-    { name: 'Jun', spending: 2390, income: 5400 },
-    { name: 'Jul', spending: 3490, income: 5500 },
-];
+const SpendingTrends = ({ transactions = [] }) => {
+    // Group transactions by month
+    const monthlyData = transactions.reduce((acc, t) => {
+        const date = new Date(t.date);
+        const monthYear = date.toLocaleString('default', { month: 'short' }); // e.g. "Mar"
 
-const SpendingTrends = () => {
+        if (!acc[monthYear]) {
+            acc[monthYear] = { name: monthYear, spending: 0, income: 0 };
+        }
+
+        if (t.type === 'expense') {
+            acc[monthYear].spending += parseFloat(t.amount);
+        } else if (t.type === 'income') {
+            acc[monthYear].income += parseFloat(t.amount);
+        }
+
+        return acc;
+    }, {});
+
+    // Convert to array and sort by date conceptually (or just use map order for now)
+    // We'll just take the Object values. For a real app, you'd sort by actual month/year.
+    const data = Object.values(monthlyData);
+
+    // If no data, provide a flatline or empty state so the chart still renders
+    if (data.length === 0) {
+        data.push({ name: 'No Data', spending: 0, income: 0 });
+    }
+
     return (
         <div className="glass p-6 rounded-2xl h-[400px]">
             <h3 className="text-lg font-semibold mb-6 text-white/90">Spending vs Income Trends</h3>
