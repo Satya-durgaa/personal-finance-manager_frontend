@@ -30,8 +30,8 @@ const Landing = ({ onGetStarted, onLogin }) => {
                             <Wallet className="text-white w-5 h-5" />
                         </div>
                         <div>
-                            <span className="text-2xl font-black tracking-tighter text-white">Wealth</span>
-                            <span className="text-2xl font-black tracking-tighter" style={{ color: '#D4AF37' }}>Wise</span>
+                            <span className="text-2xl font-black tracking-tighter text-white">Finance</span>
+                            <span className="text-2xl font-black tracking-tighter ml-1" style={{ color: '#D4AF37' }}>Track</span>
                         </div>
                     </div>
                     <div className="flex items-center gap-6">
@@ -154,7 +154,7 @@ const Landing = ({ onGetStarted, onLogin }) => {
             {/* Features */}
             <section className="relative py-32 max-w-7xl mx-auto px-8" style={{ zIndex: 1 }}>
                 <div className="text-center mb-20">
-                    <p className="text-xs uppercase tracking-[0.3em] mb-4 font-bold" style={{ color: '#D4AF37' }}>Why WealthWise</p>
+                    <p className="text-xs uppercase tracking-[0.3em] mb-4 font-bold" style={{ color: '#D4AF37' }}>Why Finance Track</p>
                     <h2 className="text-5xl font-black tracking-tight text-white">Everything You Need.</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -201,14 +201,14 @@ const Landing = ({ onGetStarted, onLogin }) => {
                         <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)' }}>
                             <Wallet className="text-white w-4 h-4" />
                         </div>
-                        <span className="text-lg font-black text-white">Wealth<span style={{ color: '#D4AF37' }}>Wise</span></span>
+                        <span className="text-lg font-black text-white">Finance <span style={{ color: '#D4AF37' }}>Track</span></span>
                     </div>
                     <div className="flex items-center gap-8 text-sm text-gray-500">
                         {['Privacy', 'Terms', 'Security', 'Contact'].map(item => (
                             <a key={item} href="#" className="hover:text-white transition-colors">{item}</a>
                         ))}
                     </div>
-                    <p className="text-sm text-gray-600">© 2025 WealthWise. All rights reserved.</p>
+                    <p className="text-sm text-gray-600">© 2025 Finance Track. All rights reserved.</p>
                 </div>
             </footer>
         </div>

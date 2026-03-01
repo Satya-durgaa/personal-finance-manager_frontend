@@ -54,7 +54,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
                     </div>
                     <div className="flex flex-col">
                         <span className="text-xl font-black tracking-tighter bg-gradient-to-r from-white to-white/40 bg-clip-text text-transparent">
-                            WealthWise
+                            Finance Track
                         </span>
                         <div className="flex items-center gap-1.5">
                             <Sparkles className="w-3 h-3 text-primary animate-pulse" />
