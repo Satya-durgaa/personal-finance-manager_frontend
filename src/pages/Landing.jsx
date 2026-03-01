@@ -112,7 +112,7 @@ const Landing = ({ onGetStarted, onLogin }) => {
                         <div className="relative rounded-[2.5rem] overflow-hidden border-2 p-1" style={{ borderColor: 'rgba(212,175,55,0.25)', background: 'rgba(212,175,55,0.03)', boxShadow: '0 0 60px rgba(212,175,55,0.1), 0 32px 80px rgba(0,0,0,0.6)' }}>
                             <div className="rounded-[2rem] overflow-hidden relative">
                                 <img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWY6489Fdy7srJOiATsfQisivjJ-xQry8q6A&s"
+                                    src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=1200"
                                     alt="Financial Growth"
                                     className="w-full h-auto object-cover group-hover:scale-[1.04] transition-transform duration-700"
                                     style={{ filter: 'brightness(0.9) contrast(1.1) saturate(1.1)' }}
